@@ -11,7 +11,7 @@ export default function Home() {
                     font-semibold
                     "
         >
-          홈화면으로 이동하기
+          헬스장 8시 ㄱㄱ
         </div>
       </Link>
     </div>
