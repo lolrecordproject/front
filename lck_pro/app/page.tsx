@@ -6,7 +6,8 @@ export default function Home() {
       <Link href="/home">
         <div
           className="
-                    bg-gray2
+                    bg-white
+                    h-screen
                     p-3
                     font-semibold
                     "
