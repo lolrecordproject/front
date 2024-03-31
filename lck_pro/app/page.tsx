@@ -1,20 +1,13 @@
-import Link from "next/link";
+import TeamCard from "@/components/TeamCard";
 
-export default function Home() {
+export default function Main() {
   return (
     <div>
-      <Link href="/home">
-        <div
-          className="
-                    bg-white
-                    h-screen
-                    p-3
-                    font-semibold
-                    "
-        >
-          헬스장 8시 ㄱㄱ
+      <div className="bg-white h-screen">
+        <div className="w-[90%] mx-auto">
+          <TeamCard name="geng" />
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

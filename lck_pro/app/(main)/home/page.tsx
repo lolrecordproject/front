@@ -32,18 +32,18 @@ export default function Home() {
   return (
     <div>
       <div className="mx-auto h-screen bg-white">
-        <div className="flex w-[30%] mx-auto justify-center">
+        <div className="flex w-[80%] mx-auto justify-center">
           <input
             type="text"
             value={inputValue}
             onChange={handleInputChange}
-            className="w-full mt-4 mr-2 p-2 border border-gray-300 rounded"
+            className="w-[80%] mt-4 mr-2 p-2 border border-gray-300 rounded"
           />
           <button
             onClick={fetchData}
-            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="w-[20%] mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            Fetch Data
+            검색
           </button>
         </div>
         {loading && <p>Loading...</p>}
