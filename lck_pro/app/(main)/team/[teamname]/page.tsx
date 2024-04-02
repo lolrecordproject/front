@@ -1,33 +1,37 @@
 "use client";
-import { getPlayerByTeam } from "@/lib/api/GetPlayers";
+
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const TeamPage = (props: any) => {
-  const [players, setPlayers] = useState<any[]>([]);
+  const [players, setPlayers] = useState([]);
+  const [teamName, setTeamName] = useState(props.params.teamname);
+
+  console.log(teamName);
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchPlayers() {
       try {
-        const playerData = await getPlayerByTeam(props.params.teamname); // 해당 팀의 플레이어 데이터 가져오기
-        if (playerData) {
-          setPlayers(playerData); // 플레이어 데이터 설정
-        }
+        const response = await axios.get(
+          `http://localhost:8000/getplayerbyteam/${teamName}`
+        );
+        setPlayers(response.data);
       } catch (error) {
-        console.error("Error fetching player data:", error);
+        console.error("Error fetching data:", error.message);
       }
-    };
+    }
 
-    fetchData();
-  }, [props.params.teamname]); // props.params.teamname이 변경될 때마다 실행
+    fetchPlayers();
+  }, [teamName]);
 
   console.log(players);
 
   return (
-    <div className="bg-white h-screen">
-      {props.params.teamname}
+    <div>
+      <h1>Players List</h1>
       <ul>
         {players.map((player, index) => (
-          <li key={index}>{player.name}</li> // 플레이어의 이름 등을 출력
+          <li key={index}>{player.name}</li>
         ))}
       </ul>
     </div>
