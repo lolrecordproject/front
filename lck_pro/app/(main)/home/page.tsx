@@ -23,8 +23,6 @@ export default function Home() {
     }
   };
 
-  console.log(data);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
