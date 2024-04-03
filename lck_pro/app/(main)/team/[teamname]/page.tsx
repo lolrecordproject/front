@@ -2,7 +2,7 @@
 
 import useGetPlayerData from "@/lib/hooks/useGetPlayers";
 
-const TeamPage = (props: any) => {
+const TeamDetailPage = (props: any) => {
   // 라우트 데이터를 매개변수로 데이터 요청 후 저장
   const { playerData, isLoading, isError } = useGetPlayerData(
     props.params.teamname
@@ -29,4 +29,4 @@ const TeamPage = (props: any) => {
   );
 };
 
-export default TeamPage;
+export default TeamDetailPage;
