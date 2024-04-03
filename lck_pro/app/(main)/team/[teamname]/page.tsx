@@ -27,7 +27,7 @@ const TeamPage = (props: any) => {
   console.log(players);
 
   return (
-    <div>
+    <div className="bg-white h-screen">
       <h1>Players List</h1>
       <ul>
         {players.map((player, index) => (
