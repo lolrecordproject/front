@@ -1,39 +1,30 @@
 "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import useGetPlayerData from "@/lib/hooks/useGetPlayers";
 
 const TeamPage = (props: any) => {
-  const [players, setPlayers] = useState([]);
-  const [teamName, setTeamName] = useState(props.params.teamname);
+  // 라우트 데이터를 매개변수로 데이터 요청 후 저장
+  const { playerData, isLoading, isError } = useGetPlayerData(
+    props.params.teamname
+  );
 
-  console.log(teamName);
-
-  useEffect(() => {
-    async function fetchPlayers() {
-      try {
-        const response = await axios.get(
-          `http://localhost:8000/getplayerbyteam/${teamName}`
-        );
-        setPlayers(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    }
-
-    fetchPlayers();
-  }, [teamName]);
-
-  console.log(players);
+  console.log(playerData);
 
   return (
     <div className="bg-white h-screen">
-      <h1>Players List</h1>
-      <ul>
-        {players.map((player, index) => (
-          <li key={index}>{player.name}</li>
-        ))}
-      </ul>
+      <h1 className="text-black">Players List</h1>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : isError ? (
+        <p>Error: Unable to fetch player data</p>
+      ) : (
+        <ul className="text-black">
+          {Array.isArray(playerData) &&
+            playerData.map((player, index: number) => (
+              <li key={index}>{player.name}</li>
+            ))}
+        </ul>
+      )}
     </div>
   );
 };
