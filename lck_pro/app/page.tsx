@@ -1,9 +1,12 @@
-import TeamCard from "@/components/TeamCard";
+"use client";
+
+import React from "react";
+import useGetProGameData from "@/lib/hooks/useGetProGames";
 
 export default function Main() {
-  return (
-    <div>
-      <div className="bg-white h-screen">메인페이지임</div>
-    </div>
-  );
+  const { gameData, isLoading, isError } = useGetProGameData();
+
+  console.log(gameData);
+
+  return <div className="bg-white h-screen">asd</div>;
 }

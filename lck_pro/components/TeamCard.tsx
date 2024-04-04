@@ -10,7 +10,7 @@ const TeamCard: FC<TeamCardProps> = ({ name }) => {
   return (
     <div>
       <Link href="/team/[teamname]" as={`/team/${name}`}>
-        <div className="border border-solid border-black rounded-lg">
+        <div className="bg-gray-200 border border-solid border-black rounded-lg">
           <p className="text-black mx-36">{name}</p>
         </div>
       </Link>
