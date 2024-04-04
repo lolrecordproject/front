@@ -1,5 +1,6 @@
 "use client";
 
+import PlayerCard from "@/components/PlayerCard";
 import useGetPlayerData from "@/lib/hooks/useGetPlayers";
 
 const TeamDetailPage = (props: any) => {
@@ -18,12 +19,12 @@ const TeamDetailPage = (props: any) => {
       ) : isError ? (
         <p>Error: Unable to fetch player data</p>
       ) : (
-        <ul className="text-black">
+        <div className="w-[80%] mx-auto max-w-4xl min-w-xs">
           {Array.isArray(playerData) &&
             playerData.map((player, index: number) => (
-              <li key={index}>{player.name}</li>
+              <PlayerCard name={player.name} />
             ))}
-        </ul>
+        </div>
       )}
     </div>
   );
