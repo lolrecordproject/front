@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionDelay: {
+        "3000": "3000ms",
+        "10000": "10000ms", // 사용자 정의 transition delay 추가
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

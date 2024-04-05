@@ -22,7 +22,11 @@ const TeamDetailPage = (props: any) => {
         <div className="w-[80%] mx-auto max-w-4xl min-w-xs">
           {Array.isArray(playerData) &&
             playerData.map((player, index: number) => (
-              <PlayerCard name={player.name} />
+              <PlayerCard
+                name={player.name}
+                team={player.team}
+                position={player.position}
+              />
             ))}
         </div>
       )}
