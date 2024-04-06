@@ -12,7 +12,7 @@ const TeamDetailPage = (props: any) => {
   console.log(playerData);
 
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-white h-screen overflow-auto">
       <h1 className="text-black">Players List</h1>
       {isLoading ? (
         <p>Loading...</p>
