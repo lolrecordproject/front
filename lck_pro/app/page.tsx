@@ -41,24 +41,29 @@ export default function Main() {
       </div>
       <div ref={ref3} className={"flex justify-center h-screen"}>
         <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
-          <div
-            className={`${
-              inView3
-                ? "opacity-100 transition-opacity duration-1000 delay-300"
-                : "opacity-0 delay-10000"
-            }`}
-          >
-            <PlayerCard name="Chovy" team="geng" position="mid" />
-          </div>
-          <div
-            className={`${
-              inView3
-                ? "opacity-100 transition-opacity duration-1000 delay-700"
-                : "opacity-0 delay-10000"
-            }`}
-          >
-            <PlayerCard name="Gumayusi" team="t1" position="ad" />
-          </div>
+          {gameData &&
+            Object.keys(gameData).map((gameId) => (
+              <div key={gameId}>
+                <h2 className="text-white">Game ID: {gameId}</h2>
+                {gameData[gameId].map((player: any, index: any) => (
+                  <div
+                    key={index}
+                    className={`${
+                      inView3
+                        ? "opacity-100 transition-opacity duration-1000 delay-" +
+                          (300 + index * 400)
+                        : "opacity-0 delay-10000"
+                    }`}
+                  >
+                    <PlayerCard
+                      name={player.name}
+                      team={player.team}
+                      position={player.position}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>
