@@ -23,7 +23,7 @@ export default function Main() {
             : "opacity-0 delay-10000"
         }`}
       >
-        <div className="text-white font-bold my-auto text-4xl">
+        <div className="text-white font-bold my-auto text-3xl">
           LCK 프로선수들의 솔로랭크 현황을 확인 하세요.
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function Main() {
             : "opacity-0 delay-10000"
         }`}
       >
-        <div className="text-white font-bold my-auto text-4xl">
+        <div className="text-white font-bold my-auto text-3xl">
           현재 게임중인 프로게이머는
         </div>
       </div>
