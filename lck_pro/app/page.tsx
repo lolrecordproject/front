@@ -41,7 +41,7 @@ export default function Main() {
       </div>
       <div ref={ref3} className={"flex justify-center h-screen"}>
         <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
-          {gameData &&
+          {gameData ? (
             Object.keys(gameData).map((gameId) => (
               <div key={gameId}>
                 <h2 className="text-white">Game ID: {gameId}</h2>
@@ -50,8 +50,7 @@ export default function Main() {
                     key={index}
                     className={`${
                       inView3
-                        ? "opacity-100 transition-opacity duration-1000 delay-" +
-                          (300 + index * 400)
+                        ? "opacity-100 transition-opacity duration-1000 delay-300"
                         : "opacity-0 delay-10000"
                     }`}
                   >
@@ -63,7 +62,12 @@ export default function Main() {
                   </div>
                 ))}
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="text-white text-center font-bold text-3xl">
+              현재 게임 중인 게이머가 없습니다.
+            </div>
+          )}
         </div>
       </div>
     </div>
