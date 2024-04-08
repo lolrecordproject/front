@@ -14,7 +14,7 @@ export default function Main() {
   console.log(gameData);
 
   return (
-    <div className="bg-black">
+    <div className="bg-black overflow-y-auto">
       <div
         ref={ref1}
         className={`flex justify-center h-screen bg-black ${
