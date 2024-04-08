@@ -41,7 +41,7 @@ export default function Main() {
       </div>
       <div ref={ref3} className={"flex justify-center h-screen"}>
         <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
-          {gameData ? (
+          {gameData && Object.keys(gameData).length > 0 ? (
             Object.keys(gameData).map((gameId) => (
               <div key={gameId}>
                 <h2 className="text-white">Game ID: {gameId}</h2>
