@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import useGetProGameData from "@/lib/hooks/useGetProGames";
 import { useInView } from "react-intersection-observer";
 import PlayerCard from "@/components/PlayerCard";
+import Link from "next/link";
 
 export default function Main() {
   const { gameData, isLoading, isError } = useGetProGameData();
@@ -15,59 +16,48 @@ export default function Main() {
 
   return (
     <div className="bg-black overflow-y-auto">
-      <div
-        ref={ref1}
-        className={`flex justify-center h-screen bg-black ${
-          inView1
-            ? "opacity-100 transition-opacity duration-1000 delay-300"
-            : "opacity-0 delay-10000"
-        }`}
-      >
-        <div className="text-white font-bold my-auto text-3xl">
-          LCK 프로선수들의 솔로랭크 현황을 확인 하세요.
-        </div>
-      </div>
-      <div
-        ref={ref2}
-        className={`flex justify-center h-screen ${
-          inView2
-            ? "opacity-100 transition-opacity duration-1000 delay-300"
-            : "opacity-0 delay-10000"
-        }`}
-      >
-        <div className="text-white font-bold my-auto text-3xl">
-          현재 게임중인 프로게이머는
-        </div>
-      </div>
-      <div ref={ref3} className={"flex justify-center h-screen"}>
+      <div ref={ref1} className={"flex justify-center h-screen"}>
         <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
-          {gameData ? (
+          {gameData &&
             Object.keys(gameData).map((gameId) => (
               <div key={gameId}>
-                <h2 className="text-white">Game ID: {gameId}</h2>
-                {gameData[gameId].map((player: any, index: any) => (
-                  <div
-                    key={index}
-                    className={`${
-                      inView3
-                        ? "opacity-100 transition-opacity duration-1000 delay-300"
-                        : "opacity-0 delay-10000"
-                    }`}
-                  >
-                    <PlayerCard
-                      name={player.name}
-                      team={player.team}
-                      position={player.position}
-                    />
+                <Link href="/match/[matchid]" as={`/match/${gameId}`}>
+                  <div className="border rounded-3xl border-white p-5">
+                    <h2 className="text-white">Game ID: {gameId}</h2>
+                    {gameData[gameId].map((player: any, index: any) => (
+                      <div
+                        key={index}
+                        className={`${
+                          inView1
+                            ? "opacity-100 transition-opacity duration-1000 delay-300"
+                            : "opacity-0 delay-10000"
+                        }`}
+                      >
+                        <PlayerCard
+                          name={player.name}
+                          team={player.team}
+                          position={player.position}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </Link>
               </div>
-            ))
-          ) : (
-            <div className="text-white text-center font-bold text-3xl">
-              현재 게임 중인 게이머가 없습니다.
-            </div>
-          )}
+            ))}
+        </div>
+      </div>
+      <div ref={ref2} className={"flex justify-center h-screen"}>
+        <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
+          <div
+            className={`${
+              inView1
+                ? "opacity-100 transition-opacity duration-1000 delay-300"
+                : "opacity-0 delay-10000"
+            }
+            text-white`}
+          >
+            하이용
+          </div>
         </div>
       </div>
     </div>
