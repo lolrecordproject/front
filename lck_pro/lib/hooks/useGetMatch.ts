@@ -1,8 +1,8 @@
 import useSWR from "swr";
 import { secondFetcher, swrGetFetcher } from "../axios";
 
-const useGetMatchData = () => {
-  const { data, error } = useSWR(`/matches/KR_7021918161`, secondFetcher);
+const useGetMatchData = (gameId: string) => {
+  const { data, error } = useSWR(`/matches/KR_${gameId}}`, secondFetcher);
 
   return {
     matchData: data,

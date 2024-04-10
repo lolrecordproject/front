@@ -3,7 +3,9 @@
 import useGetMatchData from "@/lib/hooks/useGetMatch";
 
 const MatchDetailPage = (props: any) => {
-  const { matchData, isLoading, isError } = useGetMatchData();
+  const { matchData, isLoading, isError } = useGetMatchData(
+    props.params.gameId
+  );
 
   console.log(matchData);
 
