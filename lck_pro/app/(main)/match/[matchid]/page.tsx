@@ -6,7 +6,7 @@ const MatchDetailPage = (props: any) => {
   const { matchData, isLoading, isError } = useGetMatchData(
     props.params.matchid
   );
-
+  
   console.log(matchData);
 
   return (
