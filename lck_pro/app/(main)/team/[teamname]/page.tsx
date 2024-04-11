@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import PlayerCard from "@/components/PlayerCard";
 import useGetPlayerData from "@/lib/hooks/useGetPlayers";
 
@@ -9,7 +10,9 @@ const TeamDetailPage = (props: any) => {
     props.params.teamname
   );
 
-  console.log(playerData);
+  useEffect(() => {
+    console.log(playerData);
+  }, [playerData]);
 
   return (
     <div className="bg-white h-screen overflow-auto">
@@ -23,6 +26,7 @@ const TeamDetailPage = (props: any) => {
           {Array.isArray(playerData) &&
             playerData.map((player, index: number) => (
               <PlayerCard
+                key={player.id} // 고유한 key를 제공합니다.
                 name={player.name}
                 team={player.team}
                 position={player.position}
