@@ -17,12 +17,12 @@ export default function Main() {
   return (
     <div className="bg-black overflow-y-auto">
       <div ref={ref1} className={"flex justify-center h-screen"}>
-        <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
+        <div className={`w-[30%] min-w-[350px] max-w-[500px]`}>
           {gameData &&
             Object.keys(gameData).map((gameId) => (
               <div key={gameId}>
                 <Link href="/match/[matchid]" as={`/match/${gameId}`}>
-                  <div className="border rounded-3xl border-white p-5">
+                  <div className="border rounded-3xl border-white p-3 my-5">
                     <h2 className="text-white">Game ID: {gameId}</h2>
                     {gameData[gameId].map((player: any, index: any) => (
                       <div
@@ -44,20 +44,6 @@ export default function Main() {
                 </Link>
               </div>
             ))}
-        </div>
-      </div>
-      <div ref={ref2} className={"flex justify-center h-screen"}>
-        <div className={`w-[30%] min-w-[400px] max-w-[600px]`}>
-          <div
-            className={`${
-              inView1
-                ? "opacity-100 transition-opacity duration-1000 delay-300"
-                : "opacity-0 delay-10000"
-            }
-            text-white`}
-          >
-            하이용
-          </div>
         </div>
       </div>
     </div>
